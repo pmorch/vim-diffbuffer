@@ -3,7 +3,7 @@
 "  and
 " DiffAllBuffersWithFile
 "-------------------------------------------------------------------------------
-" 
+"
 " Note that in 7.1, in the vimrc_example.vim, there is this command from
 " ':help :DiffOrig':
 "   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
@@ -28,14 +28,14 @@ func! s:DiffFileList(filelist)
   if bufexists(s:diffBufferDispFile)
     execute "bwipeout! " . s:diffBufferDispFile
   endif
-  execute "silent !rm -f " . s:diffBufferDiffFile 
+  execute "silent !rm -f " . s:diffBufferDiffFile
 
   for f in a:filelist
       echo "Arg: " . f
       execute "buffer " . f
-      execute "1,$w! " . s:diffBufferNewFile 
-      execute "silent !diff --label \"" . f . "\" --label \"" . f . 
-    \"\" -u \"%\" " . s:diffBufferNewFile . ">> " . 
+      execute "1,$w! " . s:diffBufferNewFile
+      execute "silent !diff --label \"" . f . "\" --label \"" . f .
+    \"\" -u \"%\" " . s:diffBufferNewFile . ">> " .
     \s:diffBufferDiffFile . " 2>&1"
       " Perhaps the exitcode of diff can be queried to make sure the
       " modified flag of the file is set correctly.  Pseudocode from
