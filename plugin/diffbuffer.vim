@@ -51,7 +51,7 @@ func! s:DiffFileList(filelist)
 
 endfunc
 
-func! DiffBufferWithFile()
+func! DiffABufferWithFile()
   if ! strlen(glob(expand("%")))
       echo "No file or file name - won't diff"
   else
@@ -68,9 +68,9 @@ func! DiffBufferWithFile()
       endtry
   endif
 endfunc
-command! DiffBufferWithFile call DiffBufferWithFile() 
+command! DiffABufferWithFile call DiffABufferWithFile()
 
-func! DiffAllBuffersWithFile()
+func! DiffBuffersWithFile()
   " The main thrust of this func is to create a list of all files, and
   " give it to Xx
   if bufexists(s:diffBufferDiffFile)
@@ -100,4 +100,4 @@ func! DiffAllBuffersWithFile()
     let &hidden=s:oldhidden
   endtry
 endfunc
-command! DiffAllBuffersWithFile call DiffAllBuffersWithFile() 
+command! DiffBuffersWithFile call DiffBuffersWithFile()
